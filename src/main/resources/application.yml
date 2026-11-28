@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: edu-platform
+  # по умолчанию стартуем в профиле dev (postgresql)
+  profiles:
+    default: dev
+  # osiv выключен, ленивые связи вне транзакции недоступны.
+  # данные в контроллеры отдаются через dto и join fetch запросы.
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+app:
+  # демо данные при старте (см DataSeeder)
+  data-seeder:
+    enabled: ${SEED_DATA:true}

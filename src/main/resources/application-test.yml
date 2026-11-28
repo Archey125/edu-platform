@@ -1,0 +1,20 @@
+# профиль test: интеграционные тесты идут на h2 в памяти (в режиме совместимости с postgresql)
+# postgresql остается основной бд приложения, h2 только в тестах
+spring:
+  datasource:
+    url: jdbc:h2:mem:edutest;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+app:
+  # сид данные в тестах создают сами тесты
+  data-seeder:
+    enabled: false
+
+logging:
+  level:
+    com.example.eduplatform: INFO
